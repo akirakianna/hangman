@@ -29,14 +29,10 @@ def hangman():
     while len(word_letters) > 0 and lives > 0:
         # Letters user has already guessed
         #! .join() method ' '.join(['a', 'b', 'cd']) --> 'a b cd'
-        print('You have', lives,
-              'lives left and you have used these letters: ',
-              ' '.join(used_letters))
+        print('You have', lives, 'lives left and you have used these letters: ', ' '.join(used_letters))
 
         # The current word is, inc - where the user hasn't guessed the letter yet
-        word_list = [
-            letter if letter in used_letters else '-' for letter in word
-        ]
+        word_list = [letter if letter in used_letters else '-' for letter in word]
         print('Current word: ', ' '.join(word_list))
         user_letter = input('Guess a letter:').upper()
         #* If a valid letter in alphabet that hasn't beeen used yet
@@ -45,26 +41,27 @@ def hangman():
             used_letters.add(user_letter)
             #* If letter just guessed is in the word, remove letter from word_letters
             if user_letter in word_letters:
-                used_letters.add(user_letter)
-                if user_letter in word_letters:
-                    word_letters.remove(user_letter)
-                    print('')
-                else:
-                    lives = lives - 1  #removes life if incorrect guess
-                    print('That letter is not in this word!')
+                  word_letters.remove(user_letter)
+            else:
+                  lives = lives - 1 #removes life if incorrect guess
+                  print('That letter is not in this word!')
         #* If user_letter that user entered is in used_letters, means the user has already used it before
         #! equals an invalid guess
         elif user_letter in used_letters:
-            print('You have already used this letter! Please choose another.')
-        #! Case for invalid chars
+                print(
+                    'You have already used this letter! Please choose another.'
+                )
+            #! Case for invalid chars
         else:
-            print('Invalid character. Please try again.')
-
-#gets here when len(word_letters == 0 or lives == 0)
+                print('Invalid character. Please try again.')
+  
+  #gets here when len(word_letters == 0 or lives == 0)
     if lives == 0:
-        print('You died, sorry! The word was', word)
+      print('You died, sorry! The word was', word)
     else:
-        print('Yay! You guessed the word', word, '!')
+      print('Yay! You guessed the word', word, '!')
+
 
 if __name__ == '__main__':
     hangman()
+
