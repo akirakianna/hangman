@@ -1,3 +1,3 @@
 # Hangman
 
-* Command-line version of hangman built with Python.
+* Command-line version of Hangman built with Python.
